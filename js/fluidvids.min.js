@@ -1,5 +1,5 @@
 /*
-	Fluid and Responsive YouTube/Vimeo Videos v1.0.0
+	FluidVids.js - Fluid and Responsive YouTube/Vimeo Videos v1.0.0
 	by Todd Motto: http://www.toddmotto.com
 	Latest version: https://github.com/toddmotto/Fluid-Responsive-Videos
 	
