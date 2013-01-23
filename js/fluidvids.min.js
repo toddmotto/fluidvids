@@ -1,7 +1,7 @@
 /*
 	Fluid and Responsive YouTube/Vimeo Videos v1.0.0
 	by Todd Motto: http://www.toddmotto.com
-	Latest version: https://github.com/toddmotto/Fluid-Responsive-Videos
+	Latest version: https://github.com/toddmotto/fluidvids
 	
 	Copyright 2013 Todd Motto
 	Licensed under the MIT license
