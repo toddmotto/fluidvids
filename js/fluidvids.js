@@ -14,7 +14,7 @@
 	
 	for (var i = 0; i < iframes.length; ++i) {
 		var iframe = iframes[i];
-		var players = /www.youtube.com|player.vimeo.com/;
+		var players = /www.youtube.com|player.vimeo.com|www.dailymotion.com|blip.tv/;
 		if(iframe.src.search(players) !== -1) {
 			var videoRatio = (iframe.height / iframe.width) * 100;
 			
