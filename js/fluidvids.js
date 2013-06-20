@@ -52,7 +52,7 @@
 			 * on the video's w/h dimensions
 			 */
 			var wrap              = document.createElement( 'div' );
-			wrap.className        = 'video-wrap';
+			wrap.className        = 'fluid-vids';
 			wrap.style.width      = '100%';
 			wrap.style.position   = 'relative';
 			wrap.style.paddingTop = videoRatio + '%';
