@@ -1,7 +1,10 @@
 /*
 	Fluid and Responsive YouTube/Vimeo Videos v1.0.0
-	by Todd Motto: http://www.toddmotto.com
+	By Todd Motto: http://www.toddmotto.com
 	Latest version: https://github.com/toddmotto/fluidvids
+	
+	Modified 20 June 2013 by Jayden Seric (http://jaydenseric.com) to 
+	prevent original video iframe widths from being exceeded.
 	
 	Copyright 2013 Todd Motto
 	Licensed under the MIT license
@@ -16,7 +19,9 @@
 		var iframe = iframes[i];
 		var players = /www.youtube.com|player.vimeo.com/;
 		if(iframe.src.search(players) !== -1) {
-			var videoRatio = (iframe.height / iframe.width) * 100;
+			var width = iframe.width;
+			var height = iframe.height;
+			var videoRatio = (height / width) * 100;
 			
 			iframe.style.position = 'absolute';
 			iframe.style.top = '0';
@@ -24,15 +29,22 @@
 			iframe.width = '100%';
 			iframe.height = '100%';
 			
-			var div = document.createElement('div');
-			div.className = 'video-wrap';
-			div.style.width = '100%';
-			div.style.position = 'relative';
-			div.style.paddingTop = videoRatio + '%';
+			var inner = document.createElement('div');
+			inner.className = 'video-inner-wrapper';
+			inner.style.width = '100%';
+			inner.style.position = 'relative';
+			inner.style.paddingTop = videoRatio + '%';
 			
 			var parentNode = iframe.parentNode;
-			parentNode.insertBefore(div, iframe);
-			div.appendChild(iframe);
+			parentNode.insertBefore(inner, iframe);
+			inner.appendChild(iframe);
+			
+			var outer = document.createElement('div');
+			outer.className = 'video-outer-wrapper';
+			outer.style.maxWidth = width + 'px';
+			
+			parentNode.insertBefore(outer, inner);
+			outer.appendChild(inner);
 		}
 	}
 })();
