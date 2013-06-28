@@ -1,12 +1,14 @@
 /*!
- *	FluidVids.js - fluid and responsive videos v1.1.0
- *	by Todd Motto: http://toddmotto.com
- *	Latest version: https://github.com/toddmotto/fluidvids
- *	
- *	Copyright 2013 Todd Motto. MIT licensed.
+ *  FluidVids.js v1.1.0
+ *  Responsive and fluid YouTube/Vimeo video embeds.
+ *  Project: https://github.com/toddmotto/fluidvids
+ *  by Todd Motto: http://toddmotto.com
+ *
+ *  Copyright 2013 Todd Motto. MIT licensed.
  */
-
 (function ( window, document, undefined ) {
+
+	'use strict';
 
 	/*
 	 * Grab all iframes on the page or return

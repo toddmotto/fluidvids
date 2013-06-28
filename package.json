@@ -1,0 +1,16 @@
+{
+  "name": "FluidVids",
+  "title": "FluidVids",
+  "description": "Fluid YouTube/Vimeo video embeds",
+  "author": "Todd Motto",
+  "homepage": "https://github.com/toddmotto/fluidvids/",
+  "version": "1.1.0",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.7",
+    "grunt-contrib-jshint": "~0.4.3",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-clean": "~0.4.1"
+  }
+}
