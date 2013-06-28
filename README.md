@@ -1,4 +1,5 @@
 # FluidVids.js
+[![Build Status](https://travis-ci.org/toddmotto/fluidvids.png)](https://travis-ci.org/toddmotto/fluidvids)
 
 ### [Demo](http://toddmotto.com/labs/fluidvids)
 
