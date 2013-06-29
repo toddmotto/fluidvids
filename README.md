@@ -40,5 +40,20 @@ Project files and folder structure.
 └── package.json
 ```
 
+## Adding more video players
+FluidVids use a Regular Expression and searches the `src=""` attribute of any `iframe` tags on the page. If the RegExp matches the attribute, FluidVids will then do it's thing and make your videos responsive.
+
+Here's the line you'll need to change:
+
+```
+players = /www.youtube.com|player.vimeo.com/;
+```
+
+The dividing `|` operator is essentially 'or' in RegExp. For instance, if you wanted to add the no cookies version of YouTube, you could action the following:
+
+```
+players = /www.youtube.com|www.youtube-nocookie.com|player.vimeo.com/;
+```
+
 ## License
 MIT license
