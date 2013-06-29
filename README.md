@@ -48,13 +48,13 @@ FluidVids use a Regular Expression and searches the `src=""` attribute of any `i
 
 Here's the line you'll need to change:
 
-```
+```javascript
 players = /www.youtube.com|player.vimeo.com/;
 ```
 
 The dividing `|` operator is essentially 'or' in RegExp. For instance, if you wanted to add the no cookies version of YouTube, you could action the following:
 
-```
+```javascript
 players = /www.youtube.com|www.youtube-nocookie.com|player.vimeo.com/;
 ```
 
