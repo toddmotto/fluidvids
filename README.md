@@ -40,6 +40,9 @@ Project files and folder structure.
 └── package.json
 ```
 
+## Grunt tasks
+FluidVids comes pre-configured with `Gruntfile.js` which contains all of Grunt's tasks. These tasks are `grunt-contrib-concat` for concatenating files, `grunt-contrib-jshint` for JSHinting the project files, `grunt-contrib-uglify` for minifying the code. The hidden file `.jshintrc` contains the configuration for the JSHint tests.
+
 ## Adding more video players
 FluidVids use a Regular Expression and searches the `src=""` attribute of any `iframe` tags on the page. If the RegExp matches the attribute, FluidVids will then do it's thing and make your videos responsive.
 
