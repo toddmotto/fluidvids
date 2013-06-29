@@ -2,6 +2,9 @@
 
 FluidVids is a raw JavaScript solution for responsive and fluid YouTube and Vimeo video embeds. It's extremely lightweight, and comes with a minified version for production environments. FluidVids comes preconfigured to make YouTube and Vimeo videos fluid, but you can add more as you please. You don't need to call FluidVids, it will just work its magic on video embeds automatically.
 
+## Demo
+Check out a [demo of FluidVids](http://toddmotto.com/labs/fluidvids).
+
 ## Installing with Bower
 To install FluidVids into your project using Bower, use the GitHub repository hook:
 
@@ -14,9 +17,7 @@ Drop your files into your required folders, make sure you're using the files fro
 	
 ```html
 <body>
-	
-	<!-- html content -->
-
+	<!-- html content above -->
 	<script src="dist/fluidvids.js"></script>
 </body>
 ```
@@ -41,5 +42,3 @@ Project files and folder structure.
 
 ## License
 MIT license
-
-### [Demo](http://toddmotto.com/labs/fluidvids)
