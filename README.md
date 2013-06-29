@@ -12,14 +12,14 @@ bower install https://github.com/toddmotto/fluidvids.git
 ## Manual installation
 Drop your files into your required folders, make sure you're using the files from the `dist` folder, which is the compiled production-ready code. Ensure you place the script before the closing `</body>` tag so the DOM tree is populated when the script runs.
 	
-	```html
-	<body>
-		
-		<!-- html content -->
+```html
+<body>
+	
+	<!-- html content -->
 
-		<script src="dist/fluidvids.js"></script>
-	</body>
-	```
+	<script src="dist/fluidvids.js"></script>
+</body>
+```
 
 ## Scaffolding
 Project files and folder structure.
