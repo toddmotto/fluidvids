@@ -14,7 +14,7 @@ module.exports = function ( grunt ) {
 		/*
 		 * Grunt JSON for project
 		 */
-		pkg: grunt.file.readJSON( 'fluidvids.json' ),
+		pkg: grunt.file.readJSON( 'config.json' ),
 
 		/*
 		 * Credit banner

@@ -12,12 +12,8 @@
 	"author": {
 		"name": "Todd Motto",
 		"email": "todd@toddmotto.com",
-		"url": "http://toddmotto.com"
-	},
-	"maintainers": {
-		"name": "Todd Motto",
-		"email": "todd@toddmotto.com",
-		"url": "https://github.com/toddmotto"
+		"url": "http://toddmotto.com",
+		"github" : "https://github.com/toddmotto"
 	},
 	"licenses": [
 		{
