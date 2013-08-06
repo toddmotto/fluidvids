@@ -6,68 +6,55 @@
  *
  *  Copyright 2013 Todd Motto. MIT licensed.
  */
-(function ( window, document, undefined ) {
+window.fluidvids = (function (window, document, undefined) {
 
-	'use strict';
+  'use strict';
 
-	/*
-	 * Grab all iframes on the page or return
-	 */
-	var iframes = document.getElementsByTagName( 'iframe' );
+  /*
+   * Constructor function
+   */
+  var Fluidvids = function (elem) {
+    this.elem = elem;
+  };
 
-	/*
-	 * Loop through the iframes array
-	 */
-	for ( var i = 0; i < iframes.length; i++ ) {
+  /*
+   * Prototypal setup
+   */
+  Fluidvids.prototype = {
 
-		var iframe = iframes[i],
+    init : function () {
 
-		/*
-	     * RegExp, extend this if you need more players
-	     */
-		players = /www.youtube.com|player.vimeo.com/;
+      var videoRatio = (this.elem.height / this.elem.width) * 100;
+      this.elem.style.position = 'absolute';
+      this.elem.style.top = '0';
+      this.elem.style.left = '0';
+      this.elem.width = '100%';
+      this.elem.height = '100%';
 
-		/*
-		 * If the RegExp pattern exists within the current iframe
-		 */
-		if ( iframe.src.search( players ) > 0 ) {
+      var wrap = document.createElement('div');
+      wrap.className = 'fluidvids';
+      wrap.style.width = '100%';
+      wrap.style.position = 'relative';
+      wrap.style.paddingTop = videoRatio + '%';
+      
+      var thisParent = this.elem.parentNode;
+      thisParent.insertBefore(wrap, this.elem);
+      wrap.appendChild(this.elem);
 
-			/*
-			 * Calculate the video ratio based on the iframe's w/h dimensions
-			 */
-			var videoRatio        = ( iframe.height / iframe.width ) * 100;
-			
-			/*
-			 * Replace the iframe's dimensions and position
-			 * the iframe absolute, this is the trick to emulate
-			 * the video ratio
-			 */
-			iframe.style.position = 'absolute';
-			iframe.style.top      = '0';
-			iframe.style.left     = '0';
-			iframe.width          = '100%';
-			iframe.height         = '100%';
-			
-			/*
-			 * Wrap the iframe in a new <div> which uses a
-			 * dynamically fetched padding-top property based
-			 * on the video's w/h dimensions
-			 */
-			var wrap              = document.createElement( 'div' );
-			wrap.className        = 'video-wrap';
-			wrap.style.width      = '100%';
-			wrap.style.position   = 'relative';
-			wrap.style.paddingTop = videoRatio + '%';
-			
-			/*
-			 * Add the iframe inside our newly created <div>
-			 */
-			var iframeParent      = iframe.parentNode;
-			iframeParent.insertBefore( wrap, iframe );
-			wrap.appendChild( iframe );
+    }
 
-		}
+  };
 
-	}
+  /*
+   * Initiate the plugin
+   */
+  var iframes = document.getElementsByTagName( 'iframe' );
 
-})( window, document );
+  for (var i = 0; i < iframes.length; i++) {
+    var players = /www.youtube.com|player.vimeo.com/;
+    if (iframes[i].src.search(players) > 0) {
+      new Fluidvids(iframes[i]).init();
+    }
+  }
+
+})(window, document);
