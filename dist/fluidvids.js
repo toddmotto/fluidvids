@@ -1,5 +1,5 @@
 /*!
- *  FluidVids.js v1.1.0
+ *  FluidVids.js v1.2.0
  *  Responsive and fluid YouTube/Vimeo video embeds.
  *  Project: https://github.com/toddmotto/fluidvids
  *  by Todd Motto: http://toddmotto.com
