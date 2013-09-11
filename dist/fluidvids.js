@@ -6,13 +6,21 @@
  *
  *  Copyright 2013 Todd Motto. MIT licensed.
  */
-window.fluidvids = (function (window, document, undefined) {
+(function (root, factory) {
+  'use strict';
+  if(typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define([], factory);
+  } else {
+    // Browser globals
+    root.fluidvids = factory(window, document);
+  }
+}(this, function (window, document, undefined) {
 
   'use strict';
-
   /*
-   * Constructor function
-   */
+  * Constructor function
+  */
   var Fluidvids = function (elem) {
     this.elem = elem;
   };
@@ -21,7 +29,6 @@ window.fluidvids = (function (window, document, undefined) {
    * Prototypal setup
    */
   Fluidvids.prototype = {
-
     init : function () {
 
       var videoRatio = (this.elem.height / this.elem.width) * 100;
@@ -36,13 +43,12 @@ window.fluidvids = (function (window, document, undefined) {
       wrap.style.width = '100%';
       wrap.style.position = 'relative';
       wrap.style.paddingTop = videoRatio + '%';
-      
+
       var thisParent = this.elem.parentNode;
       thisParent.insertBefore(wrap, this.elem);
       wrap.appendChild(this.elem);
 
     }
-
   };
 
   /*
@@ -57,4 +63,6 @@ window.fluidvids = (function (window, document, undefined) {
     }
   }
 
-})(window, document);
+  return Fluidvids;
+
+}));
