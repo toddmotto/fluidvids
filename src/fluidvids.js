@@ -16,7 +16,12 @@ window.fluidvids = (function (window, document, undefined) {
 
     init : function () {
 
-      var videoRatio = (this.elem.height / this.elem.width) * 100;
+      var videoRatio;
+      if (this.elem.height) {
+        videoRatio = this.elem.height / this.elem.width * 100;
+      } else {
+        videoRatio = (parseInt(this.elem.offsetHeight, 10) / parseInt(this.elem.offsetWidth,10) ) * 100;
+      }
       this.elem.style.position = 'absolute';
       this.elem.style.top = '0';
       this.elem.style.left = '0';
@@ -28,7 +33,7 @@ window.fluidvids = (function (window, document, undefined) {
       wrap.style.width = '100%';
       wrap.style.position = 'relative';
       wrap.style.paddingTop = videoRatio + '%';
-      
+
       var thisParent = this.elem.parentNode;
       thisParent.insertBefore(wrap, this.elem);
       wrap.appendChild(this.elem);
