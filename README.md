@@ -5,21 +5,35 @@ FluidVids is a raw JavaScript solution for responsive and fluid YouTube and Vime
 ## Demo
 Check out a [demo of FluidVids](http://toddmotto.com/labs/fluidvids).
 
+## Options
+Add the script just before the closing `</body>` tag, and initialise the module:
+
+```html
+<body>
+  <!-- html content above -->
+  <script src="dist/fluidvids.js"></script>
+  <script>
+  Fluidvids.init({
+    selector: 'iframe',
+    players: ['www.youtube.com', 'player.vimeo.com']
+  });
+  </script>
+</body>
+```
+
+#### selector
+Type: `String` Default: `iframe`
+Give your fluidvids a custom selector if needed, this selector will be passed into a `querySelectorAll()`.
+
+#### players
+Type: `Array` Default: `['www.youtube.com', 'player.vimeo.com']`
+To add more players, specify the domains that you need FluidVids to check against, be sure to include the subdomain for any videos that have a `src` with a subdomain.
+
 ## Installing with Bower
 To install FluidVids into your project using Bower, use the GitHub repository hook:
 
 ```
 bower install https://github.com/toddmotto/fluidvids.git
-```
-
-## Manual installation
-Drop your files into your required folders, make sure you're using the files from the `dist` folder, which is the compiled production-ready code. Ensure you place the script before the closing `</body>` tag so the DOM tree is populated when the script runs.
-	
-```html
-<body>
-	<!-- html content above -->
-	<script src="dist/fluidvids.js"></script>
-</body>
 ```
 
 ## Scaffolding
@@ -38,24 +52,6 @@ Project files and folder structure.
 ├── Gruntfile.js
 ├── config.json
 └── package.json
-```
-
-## Grunt tasks
-FluidVids comes pre-configured with `Gruntfile.js` which contains all of Grunt's tasks. These tasks are `grunt-contrib-concat` for concatenating files, `grunt-contrib-jshint` for JSHinting the project files, `grunt-contrib-uglify` for minifying the code. The hidden file `.jshintrc` contains the configuration for the JSHint tests.
-
-## Adding more video players
-FluidVids use a Regular Expression and searches the `src=""` attribute of any `iframe` tags on the page. If the RegExp matches the attribute, FluidVids will then do it's thing and make your videos responsive.
-
-Here's the line you'll need to change:
-
-```javascript
-players = /www.youtube.com|player.vimeo.com/;
-```
-
-The dividing `|` operator is essentially 'or' in RegExp. For instance, if you wanted to add the no cookies version of YouTube, you could action the following:
-
-```javascript
-players = /www.youtube.com|www.youtube-nocookie.com|player.vimeo.com/;
 ```
 
 ## License
