@@ -23,10 +23,12 @@ Add the script just before the closing `</body>` tag, and initialise the module:
 
 #### selector
 Type: `String` Default: `iframe`
+
 Give your fluidvids a custom selector if needed, this selector will be passed into a `querySelectorAll()`.
 
 #### players
 Type: `Array` Default: `['www.youtube.com', 'player.vimeo.com']`
+
 To add more players, specify the domains that you need FluidVids to check against, be sure to include the subdomain for any videos that have a `src` with a subdomain.
 
 ## Installing with Bower
