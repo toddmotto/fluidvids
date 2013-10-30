@@ -1,52 +1,56 @@
-window.fluidvids = (function (window, document, undefined) {
+window.Fluidvids = (function (window, document, undefined) {
 
   'use strict';
 
-  /*
-   * Constructor function
-   */
-  var Fluidvids = function (elem) {
-    this.elem = elem;
+  var players, obj;
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var css = '.fluidvids-elem{position:absolute;top:0px;left:0px;width:100%;' +
+  'height:100%;}.fluidvids{width:100%;position:relative;}';
+
+  var _matchesPlayer = function (source) {
+    players = new RegExp('^(https?:)?\/\/(?:' + obj.join('|') + ').*$', 'i');
+    return players.test(source);
   };
 
-  /*
-   * Prototypal setup
-   */
-  Fluidvids.prototype = {
+  var _render = function (elem) {
+    var wrap = document.createElement('div');
+    var thisParent = elem.parentNode;
+    var ratio = (parseInt(elem.height ? elem.height : elem.offsetHeight, 10) /
+      (parseInt(elem.width ? elem.width : elem.offsetWidth, 10)) * 100);
 
-    init : function () {
-
-      var videoRatio = (this.elem.height / this.elem.width) * 100;
-      this.elem.style.position = 'absolute';
-      this.elem.style.top = '0';
-      this.elem.style.left = '0';
-      this.elem.width = '100%';
-      this.elem.height = '100%';
-
-      var wrap = document.createElement('div');
-      wrap.className = 'fluidvids';
-      wrap.style.width = '100%';
-      wrap.style.position = 'relative';
-      wrap.style.paddingTop = videoRatio + '%';
-      
-      var thisParent = this.elem.parentNode;
-      thisParent.insertBefore(wrap, this.elem);
-      wrap.appendChild(this.elem);
-
-    }
-
+    thisParent.insertBefore(wrap, elem);
+    elem.className += ' fluidvids-elem';
+    wrap.className += ' fluidvids';
+    wrap.style.paddingTop = ratio + '%';
+    wrap.appendChild(elem);
   };
 
-  /*
-   * Initiate the plugin
-   */
-  var iframes = document.getElementsByTagName( 'iframe' );
-
-  for (var i = 0; i < iframes.length; i++) {
-    var players = /www.youtube.com|player.vimeo.com/;
-    if (iframes[i].src.search(players) > 0) {
-      new Fluidvids(iframes[i]).init();
+  var _appendStyles = function () {
+    var style = document.createElement('style');
+    if (style.styleSheet) {
+      style.styleSheet.cssText = css;
+    } else {
+      style.appendChild(document.createTextNode(css));
     }
-  }
+    head.appendChild(style);
+  };
+
+  var init = function (object) {
+    var options = object || {};
+    var selector = options.selector || 'iframe';
+    obj = options.players || ['www.youtube.com', 'player.vimeo.com'];
+    var nodes = document.querySelectorAll(selector);
+    for (var i = 0; i < nodes.length; i++) {
+      var self = nodes[i];
+      if (_matchesPlayer(self.src)) {
+        _render(self);
+      }
+    }
+    _appendStyles();
+  };
+
+  return {
+    init: init
+  };
 
 })(window, document);

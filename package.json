@@ -3,8 +3,8 @@
 	"title": "FluidVids",
 	"description": "Fluid YouTube/Vimeo video embeds",
 	"author": "Todd Motto",
-	"homepage": "https://github.com/toddmotto/fluidvids/",
-	"version": "1.2.0",
+	"homepage": "https://github.com/toddmotto/fluidvids",
+	"version": "2.0.0",
 	"devDependencies": {
 		"grunt": "~0.4.1",
 		"grunt-cli": "~0.1.7",
