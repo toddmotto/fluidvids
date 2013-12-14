@@ -1,6 +1,6 @@
 # FluidVids.js [![Build Status](https://travis-ci.org/toddmotto/fluidvids.png)](https://travis-ci.org/toddmotto/fluidvids)
 
-FluidVids is a raw JavaScript solution for responsive and fluid YouTube and Vimeo video embeds. It's extremely lightweight, and comes with a minified version for production environments. FluidVids comes preconfigured to make YouTube and Vimeo videos fluid, but you can add more as you please. You don't need to call FluidVids, it will just work its magic on video embeds automatically.
+FluidVids is a raw JavaScript solution for responsive and fluid YouTube and Vimeo video embeds. It's extremely lightweight, and comes with a minified version for production environments. FluidVids supports IE8+, need [IE7 Support?](#ie7).
 
 ## Demo
 Check out a [demo of FluidVids](http://toddmotto.com/labs/fluidvids).
@@ -36,6 +36,19 @@ To install FluidVids into your project using Bower, use the GitHub repository ho
 
 ```
 bower install https://github.com/toddmotto/fluidvids.git
+```
+
+## IE7
+For IE7 support, you lose a custom selector and need to default to getting elements by tag name. Change this:
+
+```
+var nodes = document.querySelectorAll(selector);
+```
+
+To this:
+
+```
+var nodes = document.getElementsByTagName(selector);
 ```
 
 ## Scaffolding
