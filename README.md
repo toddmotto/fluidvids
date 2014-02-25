@@ -1,73 +1,59 @@
-# FluidVids.js [![Build Status](https://travis-ci.org/toddmotto/fluidvids.png)](https://travis-ci.org/toddmotto/fluidvids)
+# Fluidvids.js [![Build Status](https://travis-ci.org/toddmotto/fluidvids.png)](https://travis-ci.org/toddmotto/fluidvids)
 
-FluidVids is a raw JavaScript solution for responsive and fluid YouTube and Vimeo video embeds. It's extremely lightweight, and comes with a minified version for production environments. FluidVids supports IE8+, need [IE7 Support?](#ie7).
+Fluidvids is 1KB standalone module that provides a fluid solution for video embeds. By default Fluidvids supports YouTube and Vimeo, but you can easily add your own players. Fluidvids also provides support for dynamically injected (XHR/Ajax/createElement) videos.
 
 ## Demo
 Check out a [demo of FluidVids](http://toddmotto.com/labs/fluidvids).
 
-## Options
-Add the script just before the closing `</body>` tag, and initialise the module:
+## Methods
 
-```html
-<body>
-  <!-- html content above -->
-  <script src="dist/fluidvids.js"></script>
-  <script>
-  Fluidvids.init({
-    selector: 'iframe',
-    players: ['www.youtube.com', 'player.vimeo.com']
-  });
-  </script>
-</body>
+#### init()
+Pass in your configuration.
+
+```javascript
+fluidvids.init({
+  selector: 'iframe', // runs querySelectorAll()
+  players: ['www.youtube.com', 'player.vimeo.com'] // players to support
+});
 ```
 
-#### selector
-Type: `String` Default: `iframe`
+Fluidvids internally constructs a strict `Regular Expression` which obides by your players `Array`, so ensure any new videos you add are added to `players: []`. This helps avoid any unwanted videos being parsed and provides flexibility for scaling easily.
 
-Give your fluidvids a custom selector if needed, this selector will be passed into a `querySelectorAll()`.
+#### apply()
+Provides dynamic video support. Using `apply()` should only be done when you want to requery the DOM and look for newly added videos, such as `document.createElement('iframe');`. Fluidvids uses internal object caching to lookup `init()` configuration, so it's lightning fast.
 
-#### players
-Type: `Array` Default: `['www.youtube.com', 'player.vimeo.com']`
-
-To add more players, specify the domains that you need FluidVids to check against, be sure to include the subdomain for any videos that have a `src` with a subdomain.
+```javascript
+// run after dynamic elements have been injected
+// you'll need to run this each time you need it
+fluidvids.apply();
+```
 
 ## Installing with Bower
-To install FluidVids into your project using Bower, use the GitHub repository hook:
+Use the repository hook:
 
 ```
 bower install https://github.com/toddmotto/fluidvids.git
 ```
 
-## IE7
-For IE7 support, you lose a custom selector and need to default to getting elements by tag name. Change this:
-
-```
-var nodes = document.querySelectorAll(selector);
-```
-
-To this:
-
-```
-var nodes = document.getElementsByTagName(selector);
-```
-
-## Scaffolding
-Project files and folder structure.
-
-```
-├── dist/
-│   ├── fluidvids.js
-│   └── fluidvids.min.js
-├── src/
-│   └── fluidvids.js
-├── .editorconfig
-├── .gitignore
-├── .jshintrc
-├── .travis.yml
-├── Gruntfile.js
-├── config.json
-└── package.json
+## Manual installation
+Ensure you're using the files from the `dist` directory (contains compiled production-ready code). Ensure you place the script before the closing `</body>` tag.
+	
+```html
+<body>
+  <!-- html above -->
+  <script src="dist/fluidvids.js"></script>
+  <script>
+  // fluidvids module available
+  </script>
+</body>
 ```
 
-## License
-MIT license
+## Contributing
+In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using Grunt.
+
+## Release history
+
+- 1.1.0
+  - Add toJSON and fromJSON for stringify/parse methods
+- 1.0.0
+  - Initial release

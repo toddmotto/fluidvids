@@ -1,85 +1,109 @@
-/*!
- *  Gruntfile.js configuration
- */
-
 'use strict';
 
-module.exports = function ( grunt ) {
+/**
+ * Grunt setup
+ */
+module.exports = function(grunt) {
 
-	/*
-	 * Grunt init
-	 */
-	grunt.initConfig({
+  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-		/*
-		 * Grunt JSON for project
-		 */
-		pkg: grunt.file.readJSON( 'config.json' ),
+  grunt.initConfig({
 
-		/*
-		 * Credit banner
-		 */
-		tag: {
-			banner: "/*!\n" +
-					" *  <%= pkg.title %> v<%= pkg.version %>\n" +
-					" *  <%= pkg.description %>\n" +
-					" *  Project: <%= pkg.homepage %>\n" +
-					" *  by <%= pkg.author.name %>: <%= pkg.author.url %>\n" +
-					" *\n" +
-					" *  Copyright <%= pkg.year %> <%= pkg.author.name %>." +
-					" <%= pkg.licenses[0].type %> licensed.\n" +
-					" */\n"
-		},
+    pkg: grunt.file.readJSON('package.json'),
 
-		/*
-		 * Concat
-		 */
-		concat: {
-			dist: {
-				src: ["src/fluidvids.js"],
-				dest: "dist/fluidvids.js"
-			},
-			options: {
-				banner: "<%= tag.banner %>"
-			}
-		},
+    project: {
+      src: 'src',
+      filename: '<%= pkg.name %>',
+      dist: 'dist',
+      test: 'test',
+      core: ['<%= project.src %>/<%= project.filename %>.js']
+    },
 
-		/*
-		 * jsHint
-		 */
-		jshint: {
-			files: ["src/fluidvids.js"],
-			options: {
-				jshintrc: ".jshintrc"
-			}
-		},
+    banner: '/*! <%= pkg.title %> v<%= pkg.version %> | (c) <%= grunt.template.today(\'yyyy\') %> @toddmotto | <%= pkg.homepage %> */\n',
 
-		/*
-		 * UglifyJS
-		 */
-		uglify: {
-			files: {
-				src: ["dist/fluidvids.js"],
-				dest: "dist/fluidvids.min.js"
-			},
-			options: {
-				banner: "<%= tag.banner %>"
-			}
-		}
+    jshint: {
+      gruntfile: 'Gruntfile.js',
+      files: ['<%= project.core %>'],
+      options: {
+        jshintrc: '.jshintrc'
+      }
+    },
 
-	});
+    jasmine : {
+      src : 'src/**/*.js',
+      options : {
+        specs : 'test/**/*.js'
+      }
+    },
 
-	/*
-	 * NodeJS grunt tasks
-	 */
-	grunt.loadNpmTasks("grunt-contrib-concat");
-	grunt.loadNpmTasks("grunt-contrib-jshint");
-	grunt.loadNpmTasks("grunt-contrib-uglify");
+    concat: {
+      dist: {
+        src: ['<%= project.core %>'],
+        dest: '<%= project.dist %>/<%= project.filename %>.js',
+      },
+      options: {
+        stripBanners: true,
+        banner: '<%= banner %>'
+      }
+    },
 
-	/*
-	 * Register tasks
-	 */
-	grunt.registerTask("default", ["jshint", "concat", "uglify"]);
-	grunt.registerTask("travis", ["jshint"]);
+    uglify: {
+      options: {
+        banner: '<%= banner %>'
+      },
+      dist: {
+        src: '<%= project.dist %>/<%= project.filename %>.js',
+        dest: '<%= project.dist %>/<%= project.filename %>.min.js'
+      },
+    },
+
+    clean: {
+      dist: [ 'dist' ]
+      // test: [ '<%= project.test %>/<%= project.filename %>.js' ]
+    },
+
+    copy: {
+      test: {
+        src: '<%= project.src %>/<%= project.filename %>.js',
+        dest: '<%= project.test %>/<%= project.filename %>.js',
+      },
+    },
+
+    connect: {
+      test: {
+        options: {
+          port: 9000,
+          hostname: '*',
+          open: true,
+          keepalive: true,
+          base: 'test'
+        }
+      }
+    },
+
+    watch: {
+      gruntfile: {
+        files: 'Gruntfile.js',
+        tasks: ['jshint:gruntfile'],
+      },
+      js: {
+        files: '<%= jshint.files %>',
+        tasks: ['jshint', 'uglify'],
+      }
+    }
+  });
+
+  grunt.registerTask('default', [
+    'clean',
+    'jshint',
+    'concat',
+    'uglify',
+    'jasmine'
+  ]);
+
+  grunt.registerTask('travis', [
+    'jshint',
+    'jasmine'
+  ]);
 
 };
