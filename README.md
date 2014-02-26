@@ -52,8 +52,18 @@ Ensure you're using the files from the `dist` directory (contains compiled produ
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using Grunt.
 
 ## Release history
-
+- 2.2.0
+  - XHR/Ajax content support via new `apply()` method to requery DOM
+  - Add AMD support
+- 2.1.0
+  - Fix IE8 bug
+- 2.0.0
+  - Complete rewrite using Module pattern with public methods
+  - Better ability to add custom players
+  - Add a custom selector
+- 1.2.0
+  - Make use of Prototypes
 - 1.1.0
-  - Add toJSON and fromJSON for stringify/parse methods
+  - Better structure
 - 1.0.0
   - Initial release

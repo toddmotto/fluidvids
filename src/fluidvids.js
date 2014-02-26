@@ -12,7 +12,7 @@
 
   var exports = {
     selector: 'iframe',
-    players: ['www.youtube.com']
+    players: ['www.youtube.com', 'player.vimeo.com']
   };
 
   var head = document.head || document.getElementsByTagName('head')[0];
