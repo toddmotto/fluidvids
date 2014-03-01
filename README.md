@@ -2,8 +2,7 @@
 
 Fluidvids is 1KB standalone module that provides a fluid solution for video embeds. By default Fluidvids supports YouTube and Vimeo, but you can easily add your own players. Fluidvids also provides support for dynamically injected (XHR/Ajax/createElement) videos.
 
-## Demo
-Check out a [demo of FluidVids](http://toddmotto.com/labs/fluidvids).
+Check out a [demo of FluidVids](http://toddmotto.com/labs/fluidvids). Also available as a [WordPress plugin](http://wordpress.org/plugins/fluidvids);
 
 ## Methods
 
