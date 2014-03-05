@@ -34,6 +34,20 @@ Use the repository hook:
 bower install https://github.com/toddmotto/fluidvids.git
 ```
 
+## Installing with [browserify](https://github.com/substack/node-browserify)
+Use the repository hook:
+
+```
+npm install toddmotto/fluidvids
+```
+
+Then require `fluidvids` in your file:
+
+```javascript
+// Note that it is called as a function.
+var fluidvids = require('fluidvids')();
+```
+
 ## Manual installation
 Ensure you're using the files from the `dist` directory (contains compiled production-ready code). Ensure you place the script before the closing `</body>` tag.
 	
