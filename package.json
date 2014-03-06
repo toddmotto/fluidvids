@@ -8,6 +8,7 @@
   },
   "homepage": "github.com/toddmotto/fluidvids",
   "version": "2.2.0",
+  "main": "dist/fluidvids.js",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-concat": "~0.3.0",
