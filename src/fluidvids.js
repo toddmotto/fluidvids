@@ -16,7 +16,7 @@
   };
 
   var head = document.head || document.getElementsByTagName('head')[0];
-  var css = '.fluidvids{width:100%;position:relative;}' +
+  var css = '.fluidvids{max-width:100%;position:relative;}' +
             '.fluidvids iframe{position:absolute;top:0px;left:0px;width:100%;height:100%;}';
 
   var _matches = function (source) {
@@ -29,12 +29,17 @@
       return;
     }
     var wrap = document.createElement('div');
-    var ratio = (parseInt(elem.height ? elem.height : elem.offsetHeight, 10) / (parseInt(elem.width ? elem.width : elem.offsetWidth, 10)) * 100);
+    var wrapInner = document.createElement('div');
+    var elemHeight = parseInt(elem.height ? elem.height : elem.offsetHeight, 10);
+    var elemWidth = parseInt(elem.width ? elem.width : elem.offsetWidth, 10);
+    var ratio = ( elemHeight / elemWidth * 100);
     elem.parentNode.insertBefore(wrap, elem);
     elem.setAttribute('data-fluidvids', 'loaded');
     wrap.className += 'fluidvids';
-    wrap.style.paddingTop = ratio + '%';
-    wrap.appendChild(elem);
+    wrapInner.style.paddingTop = ratio + '%';
+    wrap.style.maxWidth = elemWidth + 'px';
+    wrapInner.appendChild(elem);
+    wrap.appendChild(wrapInner);
   };
 
   var _addStyles = function () {
