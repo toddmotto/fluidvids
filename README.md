@@ -11,7 +11,7 @@ Pass in your configuration.
 
 ```javascript
 fluidvids.init({
-  selector: 'iframe', // runs querySelectorAll()
+  selector: 'iframe', // runs querySelectorAll(); supports multiple selectors as array: ['iframe', 'object']
   players: ['www.youtube.com', 'player.vimeo.com'] // players to support
 });
 ```

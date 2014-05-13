@@ -44,6 +44,9 @@
   };
 
   exports.apply = function () {
+    if (Object.prototype.toString.call(exports.selector) === '[object Array]') {
+      exports.selector = exports.selector.join(', ');
+    }
     var nodes = document.querySelectorAll(exports.selector);
     for (var i = 0; i < nodes.length; i++) {
       var node = nodes[i];
