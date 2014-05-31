@@ -1,13 +1,14 @@
 {
   "name": "fluidvids",
-  "title": "Fluidvids",
+  "title": "fluidvids",
+  "version": "2.3.0",
   "description": "",
   "repository": {
     "type": "git",
     "url": "http://github.com/toddmotto/fluidvids.git"
   },
+  "main": "dist/fluidvids.js",
   "homepage": "github.com/toddmotto/fluidvids",
-  "version": "2.2.0",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-concat": "~0.3.0",
