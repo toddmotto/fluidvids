@@ -6,9 +6,10 @@
   "camelcase": true,
   "curly": false,
   "eqeqeq": true,
-  "indent": false,
+  "indent": 2,
   "immed": true,
   "latedef": true,
+  "loopfunc": true,
   "newcap": true,
   "noarg": true,
   "quotmark": "single",
@@ -16,8 +17,8 @@
   "undef": true,
   "unused": false,
   "trailing": false,
-  "globals" : {
-    "fluidvids": true,
+  "sub": true,
+  "globals": {
     "define": true
   }
 }

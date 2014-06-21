@@ -73,6 +73,10 @@ Ensure you're using the files from the `dist` directory (contains compiled produ
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using Grunt.
 
 ## Release history
+- 2.4.0
+  - Fix bug for comparing width/height attrs `> 1000`
+  - Finish all unit tests
+  - Move to Gulp
 - 2.3.0
   - Add support for videos where `height > width`
   - Multiple `selector` support and CSS change to unrestrict element type

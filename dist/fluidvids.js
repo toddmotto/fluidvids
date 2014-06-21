@@ -1,4 +1,4 @@
-/*! fluidvids v2.3.0 | (c) 2014 @toddmotto | github.com/toddmotto/fluidvids */
+/*! fluidvids.js v2.4.0 | (c) 2014 @toddmotto | https://github.com/toddmotto/fluidvids */
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(factory);
@@ -11,7 +11,7 @@
 
   'use strict';
 
-  var exports = {
+  var fluidvids = {
     selector: ['iframe'],
     players: ['www.youtube.com', 'player.vimeo.com']
   };
@@ -28,11 +28,11 @@
   var head = document.head || document.getElementsByTagName('head')[0];
 
   var matches = function (src) {
-    return new RegExp('^(https?:)?\/\/(?:' + exports.players.join('|') + ').*$', 'i').test(src);
+    return new RegExp('^(https?:)?\/\/(?:' + fluidvids.players.join('|') + ').*$', 'i').test(src);
   };
 
-  var getRatio = function (attrs) {
-    return (parseInt(attrs[0], 10) / (parseInt(attrs[1], 10)) * 100) + '%';
+  var getRatio = function (height, width) {
+    return ((parseInt(height, 10) / parseInt(width, 10)) * 100) + '%';
   };
 
   var fluid = function (elem) {
@@ -42,7 +42,7 @@
     elem.className += 'fluidvids-item';
     elem.setAttribute('data-fluidvids', 'loaded');
     wrap.className += 'fluidvids';
-    wrap.style.paddingTop = getRatio(elem.height < elem.width ? [elem.height, elem.width] : [elem.width, elem.height]);
+    wrap.style.paddingTop = getRatio(elem.height, elem.width);
     wrap.appendChild(elem);
   };
 
@@ -52,22 +52,22 @@
     head.appendChild(div.childNodes[1]);
   };
 
-  exports.render = function () {
-    var nodes = document.querySelectorAll(exports.selector.join());
+  fluidvids.render = function () {
+    var nodes = document.querySelectorAll(fluidvids.selector.join());
     var i = nodes.length;
     while (i--) {
       fluid(nodes[i]);
     }
   };
 
-  exports.init = function (obj) {
+  fluidvids.init = function (obj) {
     for (var key in obj) {
-      exports[key] = obj[key];
+      fluidvids[key] = obj[key];
     }
-    exports.render();
+    fluidvids.render();
     addStyles();
   };
 
-  return exports;
+  return fluidvids;
 
 });
