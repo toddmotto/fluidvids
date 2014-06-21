@@ -1,13 +1,13 @@
-# fluidvids.js [![Build Status](https://travis-ci.org/toddmotto/fluidvids.png)](https://travis-ci.org/toddmotto/fluidvids)
+# fluidvids.js [![Build Status](https://travis-ci.org/toddmotto/fluidvids.svg)](https://travis-ci.org/toddmotto/fluidvids)
 
-Fluidvids is 1KB standalone module that provides a fluid solution for video embeds. By default, fluidvids supports YouTube and Vimeo - but you can easily add your own players. Fluidvids also provides support for dynamically injected (XHR/Ajax/createElement) videos.
+Fluidvids is a 1KB standalone module that provides a fluid solution for video embeds. Fluidvids has the ability for custom players to be added as well as support for dynamically injected (XHR/Ajax/createElement) videos.
 
 Check out a [demo of fluidvids](http://toddmotto.com/labs/fluidvids). Also available as a [WordPress plugin](http://wordpress.org/plugins/fluidvids).
 
 ## Methods
 
 #### init()
-Pass in your configuration.
+Pass in your configuration. That's it.
 
 ```javascript
 fluidvids.init({
@@ -17,7 +17,7 @@ fluidvids.init({
 ```
 
 #### selector
-Type: `Array`
+Type: `Array` Default: `['iframe']`
 
 Custom selector(s) that `fluidvids` will search for in the DOM and make fluid.
 
@@ -52,7 +52,7 @@ npm install toddmotto/fluidvids
 Then require `fluidvids` in your file:
 
 ```javascript
-// Note that it is called as a function.
+// Note that it is called as a function
 var fluidvids = require('fluidvids')();
 ```
 
