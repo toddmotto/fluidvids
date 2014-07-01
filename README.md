@@ -2,7 +2,10 @@
 
 Fluidvids is a 1KB standalone module that provides a fluid solution for video embeds. Fluidvids has the ability for custom players to be added as well as support for dynamically injected (XHR/Ajax/createElement) videos.
 
-Check out a [demo of fluidvids](http://toddmotto.com/labs/fluidvids). Also available as a [WordPress plugin](http://wordpress.org/plugins/fluidvids).
+> [Live demo of fluidvids](http://toddmotto.com/labs/fluidvids).
+
+* Polymer [Web Component](//github.com/toddmotto/fluidvids-polymer) version
+* [WordPress plugin](http://wordpress.org/plugins/fluidvids) version
 
 ## Methods
 
