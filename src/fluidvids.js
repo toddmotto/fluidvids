@@ -1,3 +1,4 @@
+/*! fluidvids.js v2.4.0 | (c) 2014 @toddmotto | https://github.com/toddmotto/fluidvids */
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(factory);
@@ -38,7 +39,11 @@
     if (!matches(elem.src) || !!elem.getAttribute('data-fluidvids')) return;
     var wrap = document.createElement('div');
     elem.parentNode.insertBefore(wrap, elem);
-    elem.className += 'fluidvids-item';
+    if (elem.className.length == 0) {
+      elem.className += 'fluidvids-item';    
+    } else {
+      elem.className += ' fluidvids-item';      
+    }
     elem.setAttribute('data-fluidvids', 'loaded');
     wrap.className += 'fluidvids';
     wrap.style.paddingTop = getRatio(elem.height, elem.width);
