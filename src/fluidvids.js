@@ -38,7 +38,7 @@
     if (!matches(elem.src) || !!elem.getAttribute('data-fluidvids')) return;
     var wrap = document.createElement('div');
     elem.parentNode.insertBefore(wrap, elem);
-    elem.className += 'fluidvids-item';
+    elem.className += (elem.className ? ' ' : '') + 'fluidvids-item';
     elem.setAttribute('data-fluidvids', 'loaded');
     wrap.className += 'fluidvids';
     wrap.style.paddingTop = getRatio(elem.height, elem.width);
