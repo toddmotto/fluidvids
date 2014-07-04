@@ -76,6 +76,9 @@ Ensure you're using the files from the `dist` directory (contains compiled produ
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using Grunt.
 
 ## Release history
+- 2.4.1
+  - Fix bug for class names already existing on host element
+  - Update Jasmine test accordingly
 - 2.4.0
   - Fix bug for comparing width/height attrs `> 1000`
   - Finish all unit tests
