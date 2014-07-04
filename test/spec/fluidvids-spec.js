@@ -9,12 +9,14 @@ describe('fluidvids', function () {
       var test1 = document.createElement('iframe');
       test1.src = 'http://www.youtube.com/embed/JMl8cQjBfqk';
       test1.id = 'test1';
+      test1.className = 'test';
       document.body.appendChild(test1);
       fluidvids.init();
     });
     it('should wrap the iframe in a fluid <div>', function () {
       var test1 = $$('#test1');
       expect(test1.src).toContain('youtube');
+      expect(test1.className).toContain('fluidvids-item');
       expect(test1.parentNode.className).toBe('fluidvids');
     });
   });
