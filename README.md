@@ -4,7 +4,8 @@ Fluidvids is a 1KB standalone module that provides a fluid solution for video em
 
 > [Live demo of fluidvids](http://toddmotto.com/labs/fluidvids).
 
-* Polymer [Web Component](//github.com/toddmotto/fluidvids-polymer) version
+* Polymer.js [Web Component](//github.com/toddmotto/fluidvids-polymer) version
+* React.js [component](//github.com/toddmotto/fluidvids-react) version
 * [WordPress plugin](http://wordpress.org/plugins/fluidvids) version
 
 ## Methods
