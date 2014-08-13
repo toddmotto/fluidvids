@@ -26,15 +26,15 @@
 
   var head = document.head || document.getElementsByTagName('head')[0];
 
-  var matches = function (src) {
+  function matches (src) {
     return new RegExp('^(https?:)?\/\/(?:' + fluidvids.players.join('|') + ').*$', 'i').test(src);
-  };
+  }
 
-  var getRatio = function (height, width) {
+  function getRatio (height, width) {
     return ((parseInt(height, 10) / parseInt(width, 10)) * 100) + '%';
-  };
+  }
 
-  var fluid = function (elem) {
+  function fluid (elem) {
     if (!matches(elem.src) || !!elem.getAttribute('data-fluidvids')) return;
     var wrap = document.createElement('div');
     elem.parentNode.insertBefore(wrap, elem);
@@ -43,13 +43,13 @@
     wrap.className += 'fluidvids';
     wrap.style.paddingTop = getRatio(elem.height, elem.width);
     wrap.appendChild(elem);
-  };
+  }
 
-  var addStyles = function () {
+  function addStyles () {
     var div = document.createElement('div');
     div.innerHTML = '<p>x</p><style>' + css + '</style>';
     head.appendChild(div.childNodes[1]);
-  };
+  }
 
   fluidvids.render = function () {
     var nodes = document.querySelectorAll(fluidvids.selector.join());
