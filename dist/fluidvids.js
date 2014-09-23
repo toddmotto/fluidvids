@@ -12,7 +12,7 @@
   'use strict';
 
   var fluidvids = {
-    selector: ['iframe'],
+    selector: ['iframe', 'object'],
     players: ['www.youtube.com', 'player.vimeo.com']
   };
 
@@ -36,7 +36,7 @@
   }
 
   function fluid (elem) {
-    if (!matches(elem.src) || !!elem.getAttribute('data-fluidvids')) return;
+    if (!matches(elem.src) && !matches(elem.data) || !!elem.getAttribute('data-fluidvids')) return;
     var wrap = document.createElement('div');
     elem.parentNode.insertBefore(wrap, elem);
     elem.className += (elem.className ? ' ' : '') + 'fluidvids-item';
