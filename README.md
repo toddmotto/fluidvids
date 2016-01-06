@@ -57,7 +57,7 @@ Then require `fluidvids` in your file:
 
 ```javascript
 // Note that it is called as a function
-var fluidvids = require('fluidvids')();
+var fluidvids = require('fluidvids.js')();
 ```
 
 ## Manual installation
