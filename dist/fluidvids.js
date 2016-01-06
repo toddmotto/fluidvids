@@ -13,7 +13,7 @@
 
   var fluidvids = {
     selector: ['iframe', 'object'],
-    players: ['www.youtube.com', 'player.vimeo.com']
+    players: ['www.youtube.com', 'www.youtube-nocookie.com', 'player.vimeo.com']
   };
 
   var css = [
