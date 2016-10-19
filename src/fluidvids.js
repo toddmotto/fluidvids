@@ -12,7 +12,8 @@
 
   var fluidvids = {
     selector: ['iframe', 'object'],
-    players: ['www.youtube.com', 'player.vimeo.com']
+    players: ['www.youtube.com', 'player.vimeo.com'],
+    defaultRatio: 9/16
   };
 
   var css = [
@@ -31,7 +32,13 @@
   }
 
   function getRatio (height, width) {
-    return ((parseInt(height, 10) / parseInt(width, 10)) * 100) + '%';
+    var height = parseInt(height, 10),
+        width = parseInt(width, 10),
+        ratio = fluidvids.defaultRatio;
+    if (!isNaN(height) && !isNaN(width)) {
+      ratio = height/width;
+    }
+    return (ratio * 100) + '%';
   }
 
   function fluid (elem) {
