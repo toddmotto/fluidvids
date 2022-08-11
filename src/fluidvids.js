@@ -10,8 +10,8 @@ var scriptNode = document.currentScript;
 })(this, function () {
 
   'use strict';
-  var rootNode = scriptNode ? scriptNode.getRootNode() : document;
-  var rootIsDoc = rootNode === document;
+  var rootNode;
+
   var fluidvids = {
     selector: ['iframe', 'object'],
     players: ['www.youtube.com', 'player.vimeo.com']
@@ -25,10 +25,6 @@ var scriptNode = document.currentScript;
       'position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;',
     '}'
   ].join('');
-
-  var head = rootIsDoc ?
-    rootNode.head || rootNode.getElementsByTagName('head')[0] :
-    rootNode;
 
   function matches (src) {
     return new RegExp('^(https?:)?\/\/(?:' + fluidvids.players.join('|') + ').*$', 'i').test(src);
@@ -50,6 +46,9 @@ var scriptNode = document.currentScript;
   }
 
   function addStyles () {
+    var rootIsDoc = rootNode === document;
+    var head = rootIsDoc ? rootNode.head || rootNode.getElementsByTagName('head')[0] : rootNode;
+
     var div = document.createElement('div');
     div.innerHTML = '<p>x</p><style>' + css + '</style>';
     head.appendChild(div.childNodes[1]);
@@ -64,6 +63,8 @@ var scriptNode = document.currentScript;
   };
 
   fluidvids.init = function (obj) {
+    rootNode = scriptNode ? scriptNode.getRootNode() : document;
+
     for (var key in obj) {
       fluidvids[key] = obj[key];
     }
