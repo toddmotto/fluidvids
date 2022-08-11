@@ -1,3 +1,9 @@
+/**
+ * @jest-environment jsdom
+ */
+
+var fluidvids = require('../src/fluidvids')();
+
 describe('fluidvids', function () {
 
   function $$ (selector) {
