@@ -1,7 +1,24 @@
-describe('fluidvids', function () {
+/**
+ * @jest-environment jsdom
+ */
+
+var div = document.createElement('div');
+document.body.appendChild(div);
+
+var shadowRoot = div.attachShadow({mode: 'closed'});
+var script = document.createElement('script');
+shadowRoot.appendChild(script);
+
+Object.defineProperty(document, 'currentScript', {
+  value: script,
+});
+
+var fluidvids = require('../src/fluidvids')();
+
+describe('fluidvids with inside a shadow dom', function () {
 
   function $$ (selector) {
-    return document.querySelector(selector);
+    return shadowRoot.querySelector(selector);
   }
 
   describe('insertBefore fluid wrap', function () {
@@ -10,7 +27,7 @@ describe('fluidvids', function () {
       test1.src = 'http://www.youtube.com/embed/JMl8cQjBfqk';
       test1.id = 'test1';
       test1.className = 'test';
-      document.body.appendChild(test1);
+      shadowRoot.appendChild(test1);
       fluidvids.init();
     });
     it('should wrap the iframe in a fluid <div>', function () {
@@ -32,9 +49,9 @@ describe('fluidvids', function () {
       vimeo.id = 'test3';
       slideshare.data = 'http://static.slideshare.net/swf/ssplayer2.swf?id=39220589&doc=slides-140917211059-phpapp02';
       slideshare.id = 'test4';
-      document.body.appendChild(youtube);
-      document.body.appendChild(vimeo);
-      document.body.appendChild(slideshare);
+      shadowRoot.appendChild(youtube);
+      shadowRoot.appendChild(vimeo);
+      shadowRoot.appendChild(slideshare);
       fluidvids.init({
         players: ['www.youtube.com', 'static.slideshare.net']
       });
@@ -60,7 +77,7 @@ describe('fluidvids', function () {
       test5.width = 1600;
       test5.height = 900;
       test5.id = 'test5';
-      document.body.appendChild(test5);
+      shadowRoot.appendChild(test5);
       fluidvids.init();
     });
     it('should add padding based on aspect ratio', function () {
@@ -77,7 +94,7 @@ describe('fluidvids', function () {
       test6.width = 1600;
       test6.height = 900;
       test6.id = 'test6';
-      document.body.appendChild(test6);
+      shadowRoot.appendChild(test6);
       fluidvids.init();
     });
     it('should not run on elements with data-fluidvids attrs', function () {
@@ -91,7 +108,7 @@ describe('fluidvids', function () {
       var test7 = document.createElement('iframe');
       test7.src = 'http://www.youtube.com/embed/JMl8cQjBfqk';
       test7.id = 'test7';
-      document.body.appendChild(test7);
+      shadowRoot.appendChild(test7);
       fluidvids.render();
     });
     it('should query another collection and make fluid', function () {

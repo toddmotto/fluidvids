@@ -1,24 +1,20 @@
 {
   "name": "fluidvids.js",
-  "version": "2.4.1",
+  "version": "3.0.0",
   "description": "Raw JavaScript fluid videos",
   "author": "@toddmotto",
   "license": "MIT",
   "main": "dist/fluidvids.js",
   "homepage": "https://github.com/toddmotto/fluidvids",
+  "scripts": {
+    "lint": "./node_modules/.bin/jshint ./src/",
+    "test": "./node_modules/.bin/jest",
+    "build": "./node_modules/.bin/uglifyjs ./src/fluidvids.js --output ./dist/fluidvids.min.js"
+  },
   "devDependencies": {
-    "gulp": "^3.8.5",
-    "gulp-uglify": "~0.3.0",
-    "gulp-rename": "~1.1.0",
-    "gulp-clean": "^0.2.4",
-    "gulp-plumber": "~0.6.2",
-    "gulp-header": "^1.0.2",
-    "gulp-jshint": "^1.6.1",
-    "jshint-stylish": "^0.2.0",
-    "gulp-karma": "0.0.4",
-    "karma": "^0.12.16",
-    "karma-jasmine": "~0.2.0",
-    "karma-phantomjs-launcher": "^0.1.4",
-    "karma-spec-reporter": "0.0.13"
+    "jest": "^28.1.3",
+    "jest-environment-jsdom": "^28.1.3",
+    "jshint": "^2.13.5",
+    "uglify": "^0.1.5"
   }
 }

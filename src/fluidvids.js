@@ -1,3 +1,4 @@
+var scriptNode = document.currentScript;
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(factory);
@@ -9,6 +10,7 @@
 })(this, function () {
 
   'use strict';
+  var rootNode;
 
   var fluidvids = {
     selector: ['iframe', 'object'],
@@ -23,8 +25,6 @@
       'position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;',
     '}'
   ].join('');
-
-  var head = document.head || document.getElementsByTagName('head')[0];
 
   function matches (src) {
     return new RegExp('^(https?:)?\/\/(?:' + fluidvids.players.join('|') + ').*$', 'i').test(src);
@@ -46,13 +46,16 @@
   }
 
   function addStyles () {
+    var rootIsDoc = rootNode === document;
+    var head = rootIsDoc ? rootNode.head || rootNode.getElementsByTagName('head')[0] : rootNode;
+
     var div = document.createElement('div');
     div.innerHTML = '<p>x</p><style>' + css + '</style>';
     head.appendChild(div.childNodes[1]);
   }
 
   fluidvids.render = function () {
-    var nodes = document.querySelectorAll(fluidvids.selector.join());
+    var nodes = rootNode.querySelectorAll(fluidvids.selector.join());
     var i = nodes.length;
     while (i--) {
       fluid(nodes[i]);
@@ -60,6 +63,8 @@
   };
 
   fluidvids.init = function (obj) {
+    rootNode = scriptNode ? scriptNode.getRootNode() : document;
+
     for (var key in obj) {
       fluidvids[key] = obj[key];
     }
